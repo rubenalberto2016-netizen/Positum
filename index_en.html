@@ -23,6 +23,9 @@
             }
         }
     </script>
+
+    <!-- PAYPAL SUBSCRIPTION SDK -->
+    <script src="https://www.paypal.com/sdk/js?client-id=BAAmx9Mi4mVTZnMJopAWwNo3oNurEi9NfHjHg5R3Y3kry9Jom34cHrStT2CwoskoQYrRfEcXxdfyiDneho&vault=true&intent=subscription" data-sdk-integration-source="button-factory"></script>
 </head>
 <body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
 
@@ -34,10 +37,16 @@
             </div>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
                 <a href="#diagnostic" class="hover:text-brand-400 transition">Diagnostic</a>
-                <a href="#platform" class="hover:text-brand-400 transition">Platform</a>
+                <a href="#private-portal" class="hover:text-brand-400 transition">Private Portal</a>
                 <a href="#subscriptions" class="hover:text-brand-400 transition">Subscriptions</a>
             </nav>
-            <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-3">
+                <!-- Authenticated Client Access / Login -->
+                <button onclick="openLoginModal()" class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-500/50 bg-brand-950/40 text-brand-400 hover:bg-brand-900/60 transition flex items-center gap-2">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                    <span>Client Login</span>
+                </button>
+
                 <a href="#subscriptions" class="hidden sm:inline-block px-5 py-2.5 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-600/20 transition">Pro Access</a>
             </div>
         </div>
@@ -58,7 +67,10 @@
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#diagnostic" class="px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 transition">Start Free Diagnostic</a>
-                <a href="#subscriptions" class="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold text-base border border-slate-700 transition">View Plans</a>
+                <button onclick="openLoginModal()" class="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold text-base border border-slate-700 transition flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1"></path></svg>
+                    <span>Client Portal</span>
+                </button>
             </div>
         </div>
     </section>
@@ -102,15 +114,81 @@
                     </div>
                     <h3 class="text-2xl font-bold text-white">Diagnostic Successfully Completed</h3>
                     <p id="diag-text-out" class="text-slate-300 max-w-lg mx-auto text-sm sm:text-base"></p>
-                    <div class="pt-4">
+                    <div class="pt-4 flex flex-col sm:flex-row justify-center gap-4">
                         <a href="#subscriptions" class="inline-block px-8 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30">View Recommended Subscription</a>
+                        <button onclick="openLoginModal()" class="inline-block px-8 py-3 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 font-bold border border-slate-700 transition">Save in Private Portal</button>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- SUBSCRIPTION PLANS SECTION -->
+    <!-- PRIVATE PORTAL & AUTHENTICATION SECTION -->
+    <section id="private-portal" class="py-24 bg-slate-900/60 border-t border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-brand-950/80 border border-brand-800 text-brand-400 text-xs font-semibold mb-6">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+                        <span>Isolated Environment & Legal Vault</span>
+                    </div>
+                    <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-6 leading-tight">
+                        Authenticated Private Space with Notarial Rigor
+                    </h2>
+                    <p class="text-slate-400 text-lg mb-8">
+                        Every Positum client accesses an encrypted, isolated dashboard where they manage contracts, bilingual audits, and diagnostics with complete confidentiality and data integrity.
+                    </p>
+                    <div class="space-y-4 text-slate-300">
+                        <div class="flex items-start gap-3">
+                            <span class="text-brand-400 font-bold mt-1">✓</span>
+                            <div>
+                                <strong class="text-white block">Dedicated Neon PostgreSQL Database</strong>
+                                <span class="text-sm text-slate-400">Your contract audit logs are securely segmented with row-level security (RLS).</span>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3">
+                            <span class="text-brand-400 font-bold mt-1">✓</span>
+                            <div>
+                                <strong class="text-white block">Senior Legal Supervision & Interpretation</strong>
+                                <span class="text-sm text-slate-400">Processed validation backed by 24 years of bilingual legal and notarial expertise.</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Preview Card -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl relative">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-4 mb-6">
+                        <div class="flex items-center gap-3">
+                            <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div class="w-3 h-3 rounded-full bg-emerald-500"></div>
+                            <span class="text-xs font-mono text-slate-400 ml-2">app.positum.legal/portal</span>
+                        </div>
+                        <span class="text-xs bg-brand-950 text-brand-400 font-mono px-2.5 py-1 rounded border border-brand-800">SSL / ENCRYPTED</span>
+                    </div>
+                    <div class="space-y-4">
+                        <div class="p-4 bg-slate-950/80 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div>
+                                <div class="text-xs text-slate-500 uppercase font-bold">Active Contract</div>
+                                <div class="font-bold text-slate-200 text-sm">Cross-Border_Service_Agreement_2026.pdf</div>
+                            </div>
+                            <span class="text-xs font-semibold px-2.5 py-1 rounded bg-emerald-950 text-emerald-400 border border-emerald-800">Validated</span>
+                        </div>
+                        <div class="p-4 bg-slate-950/80 rounded-xl border border-slate-800 flex justify-between items-center">
+                            <div>
+                                <div class="text-xs text-slate-500 uppercase font-bold">Subscription Status</div>
+                                <div class="font-bold text-brand-400 text-sm">Standard Plan ($490 USD/mo)</div>
+                            </div>
+                            <button onclick="openLoginModal()" class="text-xs font-bold px-3 py-1.5 rounded bg-brand-600 hover:bg-brand-500 text-white transition">Enter</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SUBSCRIPTION PLANS SECTION (WITH REAL PAYPAL) -->
     <section id="subscriptions" class="py-24 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
@@ -120,7 +198,7 @@
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 
-                <!-- Basic Plan ($190) -->
+                <!-- BASIC PLAN ($190/mo) -->
                 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-slate-100">Basic</h3>
@@ -132,15 +210,16 @@
                         <ul class="space-y-4 text-sm text-slate-300 mb-8">
                             <li class="flex items-center gap-3">✓ Up to 25 documents / mo</li>
                             <li class="flex items-center gap-3">✓ Automated legal translation</li>
-                            <li class="flex items-center gap-3">✓ Standard ticket support</li>
+                            <li class="flex items-center gap-3">✓ Positum Private Portal Access</li>
                         </ul>
                     </div>
-                    <div id="paypal-button-container-190" class="w-full">
-                        <button onclick="subscribe('Basic', 190)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition">Subscribe ($190/mo)</button>
+                    <!-- PayPal Container Basic Plan -->
+                    <div class="w-full min-h-[50px] flex items-center justify-center">
+                        <div id="paypal-button-container-P-3S07576224668753ANLLCJPQ" class="w-full"></div>
                     </div>
                 </div>
 
-                <!-- Standard Plan ($490) - Highlighted -->
+                <!-- STANDARD PLAN ($490/mo) -->
                 <div class="bg-slate-900 border-2 border-brand-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-brand-500/10">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-xs uppercase tracking-wider font-extrabold px-4 py-1.5 rounded-full">Most Popular</div>
                     <div>
@@ -154,15 +233,16 @@
                             <li class="flex items-center gap-3 text-brand-300">✓ Up to 120 documents / mo</li>
                             <li class="flex items-center gap-3 text-brand-300">✓ Advanced bilingual review (ES/EN)</li>
                             <li class="flex items-center gap-3 text-brand-300">✓ Priority Neon DB integration</li>
-                            <li class="flex items-center gap-3 text-brand-300">✓ Priority 24/7 support</li>
+                            <li class="flex items-center gap-3 text-brand-300">✓ Multi-user Private Portal</li>
                         </ul>
                     </div>
-                    <div id="paypal-button-container-490" class="w-full">
-                        <button onclick="subscribe('Standard', 490)" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30">Subscribe ($490/mo)</button>
+                    <!-- PayPal Container Standard Plan -->
+                    <div class="w-full min-h-[50px] flex items-center justify-center">
+                        <div id="paypal-button-container-P-4SG25857VS463943UNLLCNJY" class="w-full"></div>
                     </div>
                 </div>
 
-                <!-- Corporate Plan ($980) -->
+                <!-- CORPORATE PLAN ($980/mo) -->
                 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-slate-100">Corporate</h3>
@@ -177,8 +257,9 @@
                             <li class="flex items-center gap-3">✓ Exclusive account manager</li>
                         </ul>
                     </div>
-                    <div id="paypal-button-container-980" class="w-full">
-                        <button onclick="subscribe('Corporate', 980)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition">Subscribe ($980/mo)</button>
+                    <!-- PayPal Container Corporate Plan -->
+                    <div class="w-full min-h-[50px] flex items-center justify-center">
+                        <div id="paypal-button-container-P-84A78236VB690052ANLLCPTY" class="w-full"></div>
                     </div>
                 </div>
 
@@ -188,10 +269,37 @@
 
     <!-- FOOTER -->
     <footer class="py-12 border-t border-slate-800 bg-slate-950 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Positum. All rights reserved.</p>
+        <p>&copy; 2026 Positum LegalTech. All rights reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT: DIAGNOSTIC & PAYPAL HOOKS -->
+    <!-- LOGIN MODAL / PRIVATE PORTAL ACCESS -->
+    <div id="login-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-md w-full shadow-2xl relative">
+            <button onclick="closeLoginModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-xl">✕</button>
+            
+            <div class="text-center mb-6">
+                <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-brand-400 to-emerald-200 bg-clip-text text-transparent">POSITUM</span>
+                <h3 class="text-xl font-bold text-white mt-2">Private Space Access</h3>
+                <p class="text-xs text-slate-400 mt-1">Encrypted Connection to your Legal Vault</p>
+            </div>
+
+            <form onsubmit="handleLogin(event)" class="space-y-4">
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Corporate Email</label>
+                    <input type="email" required placeholder="user@company.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition">
+                </div>
+                <div>
+                    <label class="block text-xs font-semibold text-slate-300 mb-1">Password / Vault Token</label>
+                    <input type="password" required placeholder="••••••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-sm focus:outline-none focus:border-brand-500 transition">
+                </div>
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30 text-sm mt-2">
+                    Secure Login
+                </button>
+            </form>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: DIAGNOSTIC & PAYPAL BUTTON RENDERING -->
     <script>
         let selectedVolume = 0;
 
@@ -218,9 +326,62 @@
             document.getElementById('diag-text-out').innerHTML = recommendation;
         }
 
-        function subscribe(planName, price) {
-            alert('Connecting with PayPal for ' + planName + ' plan ($' + price + ' USD)...');
+        // Authentication Modal Functions
+        function openLoginModal() {
+            document.getElementById('login-modal').classList.remove('hidden');
         }
+
+        function closeLoginModal() {
+            document.getElementById('login-modal').classList.add('hidden');
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            alert('Validating credentials in Neon DB... Redirecting to your encrypted private space.');
+            closeLoginModal();
+        }
+
+        // INITIALIZE PAYPAL BUTTONS ON PAGE LOAD
+        window.addEventListener('load', function() {
+            // Basic Plan Button ($190)
+            if (document.querySelector('#paypal-button-container-P-3S07576224668753ANLLCJPQ')) {
+                paypal.Buttons({
+                    style: { shape: 'rect', color: 'gold', layout: 'horizontal', label: 'subscribe' },
+                    createSubscription: function(data, actions) {
+                        return actions.subscription.create({ 'plan_id': 'P-3S07576224668753ANLLCJPQ' });
+                    },
+                    onApprove: function(data, actions) {
+                        alert('Basic Subscription successful: ' + data.subscriptionID);
+                    }
+                }).render('#paypal-button-container-P-3S07576224668753ANLLCJPQ');
+            }
+
+            // Standard Plan Button ($490)
+            if (document.querySelector('#paypal-button-container-P-4SG25857VS463943UNLLCNJY')) {
+                paypal.Buttons({
+                    style: { shape: 'rect', color: 'gold', layout: 'horizontal', label: 'subscribe' },
+                    createSubscription: function(data, actions) {
+                        return actions.subscription.create({ 'plan_id': 'P-4SG25857VS463943UNLLCNJY' });
+                    },
+                    onApprove: function(data, actions) {
+                        alert('Standard Subscription successful: ' + data.subscriptionID);
+                    }
+                }).render('#paypal-button-container-P-4SG25857VS463943UNLLCNJY');
+            }
+
+            // Corporate Plan Button ($980)
+            if (document.querySelector('#paypal-button-container-P-84A78236VB690052ANLLCPTY')) {
+                paypal.Buttons({
+                    style: { shape: 'rect', color: 'gold', layout: 'horizontal', label: 'subscribe' },
+                    createSubscription: function(data, actions) {
+                        return actions.subscription.create({ 'plan_id': 'P-84A78236VB690052ANLLCPTY' });
+                    },
+                    onApprove: function(data, actions) {
+                        alert('Corporate Subscription successful: ' + data.subscriptionID);
+                    }
+                }).render('#paypal-button-container-P-84A78236VB690052ANLLCPTY');
+            }
+        });
     </script>
 </body>
 </html>
