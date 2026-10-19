@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vardelume | LegalTech & Document Processing Infrastructure</title>
+    <title>Positum | LegalTech & Document Processing Infrastructure</title>
     <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -30,7 +30,7 @@
     <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center space-x-3">
-                <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-brand-400 to-emerald-200 bg-clip-text text-transparent">VARDELUME</span>
+                <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-brand-400 to-emerald-200 bg-clip-text text-transparent">POSITUM</span>
             </div>
             <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
                 <a href="#diagnostic" class="hover:text-brand-400 transition">Diagnostic</a>
@@ -38,7 +38,7 @@
                 <a href="#subscriptions" class="hover:text-brand-400 transition">Subscriptions</a>
             </nav>
             <div class="flex items-center space-x-4">
-                <a href="#subscriptions" class="px-5 py-2.5 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-600/20 transition">Pro Access</a>
+                <a href="#subscriptions" class="hidden sm:inline-block px-5 py-2.5 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-600/20 transition">Pro Access</a>
             </div>
         </div>
     </header>
@@ -54,7 +54,7 @@
                 Global scale legal and contract automation
             </h1>
             <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10">
-                Integrate expert review, document processing, and AI-powered legal translation with secure workflows backed by PostgreSQL and Vercel.
+                Positum integrates expert review, document processing, and AI-powered legal translation with infrastructure backed by Neon PostgreSQL and Vercel.
             </p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#diagnostic" class="px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 transition">Start Free Diagnostic</a>
@@ -114,13 +114,13 @@
     <section id="subscriptions" class="py-24 border-t border-slate-800">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="text-center max-w-3xl mx-auto mb-16">
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Subscription Plans</h2>
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4">Positum Subscription Plans</h2>
                 <p class="text-slate-400 text-lg">Choose the right infrastructure tier for your legal operations volume.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
                 
-                <!-- Basic Plan -->
+                <!-- Basic Plan ($190) -->
                 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-slate-100">Basic</h3>
@@ -135,10 +135,12 @@
                             <li class="flex items-center gap-3">✓ Standard ticket support</li>
                         </ul>
                     </div>
-                    <button onclick="subscribe('Basic', 190)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition">Select Basic</button>
+                    <div id="paypal-button-container-190" class="w-full">
+                        <button onclick="subscribe('Basic', 190)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition">Subscribe ($190/mo)</button>
+                    </div>
                 </div>
 
-                <!-- Standard Plan (Highlighted) -->
+                <!-- Standard Plan ($490) - Highlighted -->
                 <div class="bg-slate-900 border-2 border-brand-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-brand-500/10">
                     <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-xs uppercase tracking-wider font-extrabold px-4 py-1.5 rounded-full">Most Popular</div>
                     <div>
@@ -155,10 +157,12 @@
                             <li class="flex items-center gap-3 text-brand-300">✓ Priority 24/7 support</li>
                         </ul>
                     </div>
-                    <button onclick="subscribe('Standard', 490)" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30">Select Standard</button>
+                    <div id="paypal-button-container-490" class="w-full">
+                        <button onclick="subscribe('Standard', 490)" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30">Subscribe ($490/mo)</button>
+                    </div>
                 </div>
 
-                <!-- Corporate Plan -->
+                <!-- Corporate Plan ($980) -->
                 <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
                     <div>
                         <h3 class="text-xl font-bold mb-2 text-slate-100">Corporate</h3>
@@ -173,7 +177,9 @@
                             <li class="flex items-center gap-3">✓ Exclusive account manager</li>
                         </ul>
                     </div>
-                    <button onclick="subscribe('Corporate', 980)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition">Select Corporate</button>
+                    <div id="paypal-button-container-980" class="w-full">
+                        <button onclick="subscribe('Corporate', 980)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition">Subscribe ($980/mo)</button>
+                    </div>
                 </div>
 
             </div>
@@ -182,10 +188,10 @@
 
     <!-- FOOTER -->
     <footer class="py-12 border-t border-slate-800 bg-slate-950 text-center text-slate-500 text-sm">
-        <p>&copy; 2026 Vardelume. All rights reserved.</p>
+        <p>&copy; 2026 Positum. All rights reserved.</p>
     </footer>
 
-    <!-- JAVASCRIPT: DIAGNOSTIC & CHECKOUT HOOKS -->
+    <!-- JAVASCRIPT: DIAGNOSTIC & PAYPAL HOOKS -->
     <script>
         let selectedVolume = 0;
 
@@ -213,8 +219,7 @@
         }
 
         function subscribe(planName, price) {
-            // Ready to connect with your backend API (Neon + Prisma + Stripe/PayPal)
-            alert('Redirecting to secure gateway for ' + planName + ' Plan ($' + price + ' USD)...');
+            alert('Connecting with PayPal for ' + planName + ' plan ($' + price + ' USD)...');
         }
     </script>
 </body>
