@@ -1,1 +1,245 @@
 
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vardelume | LegalTech & Document Processing Infrastructure</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0fdf4',
+                            500: '#22c55e',
+                            600: '#16a34a',
+                            700: '#15803d',
+                            900: '#14532d',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-brand-500 selection:text-white">
+
+    <!-- HEADER / NAVBAR -->
+    <header class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/80 border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-brand-400 to-emerald-200 bg-clip-text text-transparent">VARDELUME</span>
+            </div>
+            <nav class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-300">
+                <a href="#diagnostico" class="hover:text-brand-400 transition" data-es="Diagnóstico" data-en="Diagnostic">Diagnóstico</a>
+                <a href="#caracteristicas" class="hover:text-brand-400 transition" data-es="Plataforma" data-en="Platform">Plataforma</a>
+                <a href="#precios" class="hover:text-brand-400 transition" data-es="Suscripciones" data-en="Subscriptions">Suscripciones</a>
+            </nav>
+            <div class="flex items-center space-x-4">
+                <!-- Botón de cambio de idioma -->
+                <button onclick="toggleLanguage()" class="px-3 py-1.5 text-xs font-bold uppercase rounded-lg bg-slate-800 text-brand-400 border border-slate-700 hover:bg-slate-700 transition">
+                    <span id="lang-label">EN</span>
+                </button>
+                <a href="#precios" class="hidden sm:inline-block px-5 py-2.5 text-sm font-semibold rounded-xl bg-brand-600 hover:bg-brand-500 text-white shadow-lg shadow-brand-600/20 transition" data-es="Acceso Pro" data-en="Pro Access">Acceso Pro</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="relative pt-20 pb-24 overflow-hidden border-b border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+            <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-950/50 border border-brand-800 text-brand-400 text-xs font-semibold mb-6">
+                <span class="w-2 h-2 rounded-full bg-brand-500 animate-pulse"></span>
+                <span data-es="Infraestructura Legal & Traducción Avanzada" data-en="Advanced Legal & Translation Infrastructure">Infraestructura Legal & Traducción Avanzada</span>
+            </div>
+            <h1 class="text-4xl sm:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight mb-8">
+                <span data-es="Automatización jurídica y de contratos a escala global" data-en="Global scale legal and contract automation">Automatización jurídica y de contratos a escala global</span>
+            </h1>
+            <p class="text-lg sm:text-xl text-slate-400 max-w-2xl mx-auto mb-10" data-es="Integra revisión experta, procesamiento documental y traducción legal impulsada por IA con flujos seguros respaldados por PostgreSQL y Stripe." data-en="Integrate expert review, document processing, and AI-powered legal translation with secure workflows backed by PostgreSQL and Stripe.">
+                Integra revisión experta, procesamiento documental y traducción legal impulsada por IA con flujos seguros respaldados por PostgreSQL y Stripe.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#diagnostico" class="px-8 py-4 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-base shadow-xl shadow-brand-600/30 transition" data-es="Iniciar Diagnóstico Gratuito" data-en="Start Free Diagnostic">Iniciar Diagnóstico Gratuito</a>
+                <a href="#precios" class="px-8 py-4 rounded-xl bg-slate-900 hover:bg-slate-800 text-slate-200 font-bold text-base border border-slate-700 transition" data-es="Ver Planes" data-en="View Plans">Ver Planes</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE GANCHO: DIAGNÓSTICO EN LÍNEA -->
+    <section id="diagnostico" class="py-20 bg-slate-900/40">
+        <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold tracking-tight mb-3" data-es="Diagnóstico Legal en Línea" data-en="Online Legal Diagnostic">Diagnóstico Legal en Línea</h2>
+                <p class="text-slate-400" data-es="Responde 2 preguntas breves para evaluar el nivel de exposición de tus contratos y documentos transfronterizos." data-en="Answer 2 brief questions to evaluate the risk exposure of your cross-border contracts and documents.">Responde 2 preguntas breves para evaluar el nivel de exposición de tus contratos y documentos transfronterizos.</p>
+            </div>
+
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-10 shadow-2xl">
+                <!-- Paso 1 -->
+                <div id="diag-step-1" class="space-y-6">
+                    <label class="block text-lg font-semibold text-slate-200" data-es="1. ¿Cuál es el volumen mensual aproximado de documentos legales o contratos procesados?" data-en="1. What is the approximate monthly volume of legal documents or contracts processed?">
+                        1. ¿Cuál es el volumen mensual aproximado de documentos legales o contratos procesados?
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <button onclick="setVol(10)" class="p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-brand-500 text-center transition font-medium" data-es="Menos de 20 docs" data-en="Under 20 docs">Menos de 20 docs</button>
+                        <button onclick="setVol(50)" class="p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-brand-500 text-center transition font-medium" data-es="20 - 100 docs" data-en="20 - 100 docs">20 - 100 docs</button>
+                        <button onclick="setVol(150)" class="p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-brand-500 text-center transition font-medium" data-es="Más de 100 docs" data-en="100+ docs">Más de 100 docs</button>
+                    </div>
+                </div>
+
+                <!-- Paso 2 (Oculto inicialmente) -->
+                <div id="diag-step-2" class="space-y-6 hidden">
+                    <label class="block text-lg font-semibold text-slate-200" data-es="2. ¿Requiere validación bilingüe (Español / Inglés Jurídico) certificada?" data-en="2. Do you require certified bilingual validation (Spanish / Legal English)?">
+                        2. ¿Requiere validación bilingüe (Español / Inglés Jurídico) certificada?
+                    </label>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <button onclick="runDiagnostic(true)" class="p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-brand-500 text-center transition font-semibold text-brand-400" data-es="Sí, alta exigencia" data-en="Yes, high demand">Sí, alta exigencia</button>
+                        <button onclick="runDiagnostic(false)" class="p-4 rounded-xl border border-slate-700 bg-slate-800/50 hover:border-brand-500 text-center transition font-semibold" data-es="Uso estándar" data-en="Standard usage">Uso estándar</button>
+                    </div>
+                </div>
+
+                <!-- Resultado del Diagnóstico -->
+                <div id="diag-result" class="hidden text-center space-y-6 py-4">
+                    <div class="inline-flex p-4 bg-brand-950 border border-brand-800 rounded-full text-brand-400 mb-2">
+                        <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white" data-es="Diagnóstico Completado con Éxito" data-en="Diagnostic Successfully Completed">Diagnóstico Completado con Éxito</h3>
+                    <p id="diag-text-out" class="text-slate-300 max-w-lg mx-auto text-sm sm:text-base"></p>
+                    <div class="pt-4">
+                        <a id="rec-plan-btn" href="#precios" class="inline-block px-8 py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30" data-es="Ver Suscripción Recomendada" data-en="View Recommended Subscription">Ver Suscripción Recomendada</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SECCIÓN DE SUSCRIPCIONES / PRECIOS -->
+    <section id="precios" class="py-24 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-4" data-es="Planes de Suscripción" data-en="Subscription Plans">Planes de Suscripción</h2>
+                <p class="text-slate-400 text-lg" data-es="Escoge el nivel de infraestructura adecuado para tu volumen operativo legal." data-en="Choose the right infrastructure tier for your legal operations volume.">Escoge el nivel de infraestructura adecuado para tu volumen operativo legal.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
+                
+                <!-- Básica -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-100" data-es="Básica" data-en="Basic">Básica</h3>
+                        <p class="text-slate-400 text-sm mb-6" data-es="Ideal para profesionales independientes y notarías emergentes." data-en="Ideal for independent professionals and emerging notary offices.">Ideal para profesionales independientes y notarías emergentes.</p>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl sm:text-5xl font-black">$190</span>
+                            <span class="text-slate-400 ml-2 text-sm" data-es="/ mes" data-en="/ mo">/ mes</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300 mb-8">
+                            <li class="flex items-center gap-3">✓ <span data-es="Hasta 25 documentos / mes" data-en="Up to 25 documents / mo">Hasta 25 documentos / mes</span></li>
+                            <li class="flex items-center gap-3">✓ <span data-es="Traducción legal automatizada" data-en="Automated legal translation">Traducción legal automatizada</span></li>
+                            <li class="flex items-center gap-3">✓ <span data-es="Soporte estándar por ticket" data-en="Standard ticket support">Soporte estándar por ticket</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="subscribe('Basica', 190)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition" data-es="Elegir Básica" data-en="Select Basic">Elegir Básica</button>
+                </div>
+
+                <!-- Estándar (Destacada) -->
+                <div class="bg-slate-900 border-2 border-brand-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-brand-500/10">
+                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-xs uppercase tracking-wider font-extrabold px-4 py-1.5 rounded-full" data-es="Más Popular" data-en="Most Popular">Más Popular</div>
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-100" data-es="Estándar" data-en="Standard">Estándar</h3>
+                        <p class="text-slate-400 text-sm mb-6" data-es="Diseñado para estudios jurídicos y agencias de crecimiento." data-en="Designed for law firms and growth agencies.">Diseñado para estudios jurídicos y agencias de crecimiento.</p>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl sm:text-5xl font-black text-brand-400">$490</span>
+                            <span class="text-slate-400 ml-2 text-sm" data-es="/ mes" data-en="/ mo">/ mes</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300 mb-8">
+                            <li class="flex items-center gap-3 text-brand-300">✓ <span data-es="Hasta 120 documentos / mes" data-en="Up to 120 documents / mo">Hasta 120 documentos / mes</span></li>
+                            <li class="flex items-center gap-3 text-brand-300">✓ <span data-es="Revisión bilingüe avanzada (ES/EN)" data-en="Advanced bilingual review (ES/EN)">Revisión bilingüe avanzada (ES/EN)</span></li>
+                            <li class="flex items-center gap-3 text-brand-300">✓ <span data-es="Integración prioritaria en Neon DB" data-en="Priority Neon DB integration">Integración prioritaria en Neon DB</span></li>
+                            <li class="flex items-center gap-3 text-brand-300">✓ <span data-es="Soporte prioritario 24/7" data-en="Priority 24/7 support">Soporte prioritario 24/7</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="subscribe('Estandar', 490)" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30" data-es="Elegir Estándar" data-en="Select Standard">Elegir Estándar</button>
+                </div>
+
+                <!-- Corporativa -->
+                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
+                    <div>
+                        <h3 class="text-xl font-bold mb-2 text-slate-100" data-es="Corporativa" data-en="Corporate">Corporativa</h3>
+                        <p class="text-slate-400 text-sm mb-6" data-es="Solución integral sin límites para grandes corporaciones." data-en="Comprehensive unlimited solution for large corporations.">Solución integral sin límites para grandes corporaciones.</p>
+                        <div class="flex items-baseline mb-8">
+                            <span class="text-4xl sm:text-5xl font-black">$980</span>
+                            <span class="text-slate-400 ml-2 text-sm" data-es="/ mes" data-en="/ mo">/ mes</span>
+                        </div>
+                        <ul class="space-y-4 text-sm text-slate-300 mb-8">
+                            <li class="flex items-center gap-3">✓ <span data-es="Documentos ilimitados / mes" data-en="Unlimited documents / mo">Documentos ilimitados / mes</span></li>
+                            <li class="flex items-center gap-3">✓ <span data-es="Infraestructura dedicada en Vercel" data-en="Dedicated Vercel infrastructure">Infraestructura dedicada en Vercel</span></li>
+                            <li class="flex items-center gap-3">✓ <span data-es="Account manager exclusivo" data-en="Exclusive account manager">Account manager exclusivo</span></li>
+                        </ul>
+                    </div>
+                    <button onclick="subscribe('Corporativa', 980)" class="w-full py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 font-bold border border-slate-700 transition" data-es="Elegir Corporativa" data-en="Select Corporate">Elegir Corporativa</button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-12 border-t border-slate-800 bg-slate-950 text-center text-slate-500 text-sm">
+        <p>&copy; 2026 Vardelume. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+    </footer>
+
+    <!-- JAVASCRIPT: LÓGICA DE IDIOMA Y DIAGNÓSTICO -->
+    <script>
+        let currentLang = 'es';
+        let selectedVolume = 0;
+
+        function toggleLanguage() {
+            currentLang = currentLang === 'es' ? 'en' : 'es';
+            document.getElementById('lang-label').innerText = currentLang === 'es' ? 'EN' : 'ES';
+            document.documentElement.lang = currentLang;
+
+            // Actualizar elementos dinámicos con data-es / data-en
+            document.querySelectorAll('[data-es]').forEach(el => {
+                const text = el.getAttribute(`data-${currentLang}`);
+                if (text) el.innerText = text;
+            });
+        }
+
+        function setVol(val) {
+            selectedVolume = val;
+            document.getElementById('diag-step-1').classList.add('hidden');
+            document.getElementById('diag-step-2').classList.remove('hidden');
+        }
+
+        function runDiagnostic(highDemand) {
+            document.getElementById('diag-step-2').classList.add('hidden');
+            const resultBox = document.getElementById('diag-result');
+            resultBox.classList.remove('hidden');
+
+            let recommendation = '';
+            if (selectedVolume <= 10 && !highDemand) {
+                recommendation = currentLang === 'es' 
+                    ? 'Recomendamos la **Suscripción Básica ($190/mo)** para cubrir tus necesidades puntuales con total seguridad jurídica.'
+                    : 'We recommend the **Basic Subscription ($190/mo)** to cover your specific needs with total legal security.';
+            } else if (selectedVolume <= 50 || highDemand) {
+                recommendation = currentLang === 'es'
+                    ? 'Recomendamos la **Suscripción Estándar ($490/mo)**. Es el plan óptimo para tu volumen y exigencia bilingüe.'
+                    : 'We recommend the **Standard Subscription ($490/mo)**. It is the optimal plan for your volume and bilingual requirements.';
+            } else {
+                recommendation = currentLang === 'es'
+                    ? 'Recomendamos la **Suscripción Corporativa ($980/mo)** para garantizar capacidad ilimitada y soporte dedicado.'
+                    : 'We recommend the **Corporate Subscription ($980/mo)** to guarantee unlimited capacity and dedicated support.';
+            }
+
+            document.getElementById('diag-text-out').innerHTML = recommendation;
+        }
+
+        function subscribe(planName, price) {
+            // Preparado para conectar con tu backend (Neon + Prisma + Stripe/PayPal)
+            alert((currentLang === 'es' ? 'Redirigiendo a pasarela segura para plan ' : 'Redirecting to secure gateway for plan ') + planName + ' ($' + price + ' USD)...');
+        }
+    </script>
+</body>
+</html>
