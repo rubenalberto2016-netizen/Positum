@@ -33,7 +33,7 @@
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
-    <!-- PAYPAL SDK DE SUSCRIPCIONES CON CATCH DE ERRORES -->
+    <!-- PAYPAL SDK DE SUSCRIPCIONES -->
     <script src="https://www.paypal.com/sdk/js?client-id=BAAmx9Mi4mVTZnMJopAWwNo3oNurEi9NfHjHg5R3Y3kry9Jom34cHrStT2CwoskoQYrRfEcXxdfyiDneho&vault=true&intent=subscription" data-sdk-integration-source="button-factory" async crossorigin="anonymous"></script>
 
     <style>
@@ -50,17 +50,9 @@
             border: 1px solid rgba(255, 255, 255, 0.08);
         }
 
-        /* Console scrollbar */
-        #agent-console::-webkit-scrollbar {
-            width: 6px;
-        }
-        #agent-console::-webkit-scrollbar-track {
-            background: #020617;
-        }
-        #agent-console::-webkit-scrollbar-thumb {
-            background: #1e293b;
-            border-radius: 3px;
-        }
+        #agent-console::-webkit-scrollbar { width: 6px; }
+        #agent-console::-webkit-scrollbar-track { background: #020617; }
+        #agent-console::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 3px; }
     </style>
 </head>
 <body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col antialiased selection:bg-brand-500 selection:text-white">
@@ -78,25 +70,21 @@
                 </div>
             </div>
 
-            <!-- Navegación Principal -->
             <nav class="hidden lg:flex items-center space-x-1 text-sm font-medium">
                 <button onclick="switchTab('landing')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition" data-es="Inicio" data-en="Home">Inicio</button>
                 <button onclick="switchTab('diagnostico')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition" data-es="Diagnóstico" data-en="Diagnostic">Diagnóstico</button>
                 <button onclick="switchTab('dashboard')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition" data-es="Dashboard" data-en="Dashboard">Dashboard</button>
                 <button onclick="switchTab('vault')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition" data-es="Bóveda & Notaría" data-en="Vault & Notary">Bóveda & Notaría</button>
                 <button onclick="switchTab('agents')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition" data-es="Agentes IA" data-en="AI Agents">Agentes IA</button>
-                <button onclick="switchTab('admin')" class="nav-btn px-3 py-2 rounded-lg text-amber-400 hover:text-amber-300 hover:bg-amber-950/30 transition border border-amber-500/20" data-es="Admin" data-en="Admin">Admin</button>
                 <button onclick="switchTab('precios')" class="nav-btn px-3 py-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/60 transition" data-es="Suscripciones" data-en="Subscriptions">Suscripciones</button>
             </nav>
 
             <div class="flex items-center space-x-3">
-                <!-- Botón de cambio de idioma -->
                 <button onclick="toggleLanguage()" class="px-3 py-1.5 text-xs font-bold uppercase rounded-lg bg-slate-900 text-brand-400 border border-slate-700 hover:bg-slate-800 transition flex items-center gap-1">
                     <i data-lucide="globe" class="w-3.5 h-3.5"></i>
                     <span id="lang-label">EN</span>
                 </button>
                 
-                <!-- Botón de Acceso Autenticado / Login -->
                 <button onclick="openLoginModal()" class="px-4 py-2 text-xs font-bold rounded-xl border border-brand-500/50 bg-brand-950/40 text-brand-400 hover:bg-brand-900/60 transition flex items-center gap-2">
                     <i data-lucide="lock" class="w-3.5 h-3.5"></i>
                     <span data-es="Acceso Clientes" data-en="Client Login">Acceso Clientes</span>
@@ -138,7 +126,6 @@
                 </div>
             </div>
 
-            <!-- Grilla de Características -->
             <div class="grid md:grid-cols-3 gap-6 pt-6">
                 <div class="glass-panel p-6 rounded-2xl space-y-4 hover:border-brand-500/50 transition cursor-pointer" onclick="switchTab('agents')">
                     <div class="w-12 h-12 rounded-xl bg-brand-500/10 flex items-center justify-center text-brand-400">
@@ -174,7 +161,6 @@
             </div>
 
             <div class="glass-panel rounded-2xl p-6 sm:p-10 shadow-2xl">
-                <!-- Paso 1 -->
                 <div id="diag-step-1" class="space-y-6">
                     <label class="block text-lg font-semibold text-slate-200" data-es="1. ¿Cuál es el volumen mensual aproximado de documentos legales o contratos procesados?" data-en="1. What is the approximate monthly volume of legal documents or contracts processed?">
                         1. ¿Cuál es el volumen mensual aproximado de documentos legales o contratos procesados?
@@ -186,7 +172,6 @@
                     </div>
                 </div>
 
-                <!-- Paso 2 -->
                 <div id="diag-step-2" class="space-y-6 hidden">
                     <label class="block text-lg font-semibold text-slate-200" data-es="2. ¿Requiere validación bilingüe certificada (Español / Inglés) y firmas notariales?" data-en="2. Do you require certified bilingual validation (Spanish / English) and notary signatures?">
                         2. ¿Requiere validación bilingüe certificada (Español / Inglés) y firmas notariales?
@@ -197,7 +182,6 @@
                     </div>
                 </div>
 
-                <!-- Resultado -->
                 <div id="diag-result" class="hidden text-center space-y-6 py-4">
                     <div class="inline-flex p-4 bg-brand-950 border border-brand-800 rounded-full text-brand-400">
                         <i data-lucide="check-circle" class="w-8 h-8"></i>
@@ -226,7 +210,6 @@
                 </span>
             </div>
 
-            <!-- Métricas -->
             <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 <div class="glass-panel p-5 rounded-xl space-y-2">
                     <span class="text-xs text-slate-400 uppercase font-semibold" data-es="Agentes IA Activos" data-en="Active AI Agents">Agentes IA Activos</span>
@@ -244,43 +227,53 @@
                     <span class="text-xs text-amber-500 font-medium" data-es="Notaría activa" data-en="Notary active">Notaría activa</span>
                 </div>
                 <div class="glass-panel p-5 rounded-xl space-y-2">
-                    <span class="text-xs text-slate-400 uppercase font-semibold" data-es="Suscripción PayPal" data-en="PayPal Subscription">Suscripción PayPal</span>
-                    <div class="text-2xl font-bold text-brand-400" data-es="Estándar ($490)" data-en="Standard ($490)">Estándar ($490)</div>
-                    <span class="text-xs text-emerald-400 font-medium" data-es="Estado: Activa" data-en="Status: Active">Estado: Activa</span>
+                    <span class="text-xs text-slate-400 uppercase font-semibold" data-es="Margen Operativo / Tokens" data-en="Operating Margin / Tokens">Margen Operativo / Tokens</span>
+                    <div class="text-3xl font-extrabold text-brand-400">96.4%</div>
+                    <span class="text-xs text-slate-400 font-medium" data-es="Uso optimizado (Rate-limited)" data-en="Optimized usage (Rate-limited)">Uso optimizado (Rate-limited)</span>
                 </div>
             </div>
+        </section>
 
-            <!-- Tabla de Actividad -->
-            <div class="glass-panel rounded-2xl p-6 space-y-4">
-                <h3 class="text-lg font-semibold text-white" data-es="Actividad Reciente del Workspace" data-en="Recent Workspace Activity">Actividad Reciente del Workspace</h3>
+        <!-- 4. BÓVEDA & NOTARÍA -->
+        <section id="tab-vault" class="tab-content space-y-8">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white" data-es="Bóveda Criptográfica y Registros Notariales" data-en="Cryptographic Vault & Notary Records">Bóveda Criptográfica y Registros Notariales</h2>
+                    <p class="text-sm text-slate-400" data-es="Aislamiento multi-tenant con Row-Level Security (RLS) y trazabilidad jurídica con hashes SHA-256." data-en="Multi-tenant isolation with Row-Level Security (RLS) and cryptographic SHA-256 audit trails.">Aislamiento multi-tenant con Row-Level Security (RLS) y trazabilidad jurídica con hashes SHA-256.</p>
+                </div>
+                <button onclick="alert('Simulando subida de documento cifrado a Neon PostgreSQL...')" class="px-4 py-2 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs flex items-center gap-2 shadow-lg shadow-brand-600/20 transition">
+                    <i data-lucide="upload" class="w-4 h-4"></i>
+                    <span data-es="Subir y Cifrar Contrato" data-en="Upload & Encrypt Contract">Subir y Cifrar Contrato</span>
+                </button>
+            </div>
+
+            <div class="glass-panel rounded-2xl overflow-hidden">
+                <div class="p-6 border-b border-slate-800 flex justify-between items-center">
+                    <h3 class="font-bold text-white text-base" data-es="Expedientes Activos en Custodia" data-en="Active Custody Files">Expedientes Activos en Custodia</h3>
+                    <span class="text-xs text-brand-400 font-mono bg-brand-950/60 px-3 py-1 rounded-lg border border-brand-800">RLS: tenant_id_8829_active</span>
+                </div>
                 <div class="overflow-x-auto">
-                    <table class="w-full text-left text-sm text-slate-300">
-                        <thead class="text-xs text-slate-400 uppercase bg-slate-900/60 border-b border-slate-800">
+                    <table class="w-full text-left text-sm">
+                        <thead class="bg-slate-900/80 text-slate-400 font-semibold uppercase text-[11px] tracking-wider">
                             <tr>
-                                <th class="py-3 px-4" data-es="Módulo / Evento" data-en="Module / Event">Módulo / Evento</th>
-                                <th class="py-3 px-4" data-es="Usuario / Emisor" data-en="User / Issuer">Usuario / Emisor</th>
-                                <th class="py-3 px-4" data-es="Estado" data-en="Status">Estado</th>
-                                <th class="py-3 px-4" data-es="Fecha" data-en="Date">Fecha</th>
+                                <th class="px-6 py-4" data-es="Documento / ID" data-en="Document / ID">Documento / ID</th>
+                                <th class="px-6 py-4" data-es="Tipo Legal" data-en="Legal Type">Tipo Legal</th>
+                                <th class="px-6 py-4" data-es="Hash SHA-256 & Sello" data-en="SHA-256 Hash & Timestamp">Hash SHA-256 & Sello</th>
+                                <th class="px-6 py-4" data-es="Estado Notarial" data-en="Notary Status">Estado Notarial</th>
                             </tr>
                         </thead>
-                        <tbody class="divide-y divide-slate-800/60">
-                            <tr>
-                                <td class="py-3 px-4 font-medium text-white">Ejecución de Agente Financiero (#AG-902)</td>
-                                <td class="py-3 px-4">admin@positum.legal</td>
-                                <td class="py-3 px-4"><span class="px-2.5 py-0.5 text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full" data-es="Completado" data-en="Completed">Completado</span></td>
-                                <td class="py-3 px-4 text-slate-400">Hace 10 min</td>
+                        <tbody class="divide-y divide-slate-800 text-slate-300 font-mono text-xs">
+                            <tr class="hover:bg-slate-900/40 transition">
+                                <td class="px-6 py-4 font-bold text-white">MSA_Global_Tech_v4.pdf</td>
+                                <td class="px-6 py-4 text-slate-400">Master Services Agreement (Common Law)</td>
+                                <td class="px-6 py-4 text-brand-400">0x8f4c...91b2 (Timestamped)</td>
+                                <td class="px-6 py-4"><span class="px-2.5 py-1 rounded-full bg-brand-500/10 text-brand-400 border border-brand-500/20 font-semibold" data-es="Validado Notarialmente" data-en="Notarized">Validado Notarialmente</span></td>
                             </tr>
-                            <tr>
-                                <td class="py-3 px-4 font-medium text-white">Firma Notarial de Contrato Marco (ES/EN)</td>
-                                <td class="py-3 px-4">notaria@central-legal.org</td>
-                                <td class="py-3 px-4"><span class="px-2.5 py-0.5 text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full" data-es="En Proceso" data-en="In Progress">En Proceso</span></td>
-                                <td class="py-3 px-4 text-slate-400">Hace 2 horas</td>
-                            </tr>
-                            <tr>
-                                <td class="py-3 px-4 font-medium text-white">Carga Cifrada en Bóveda (Cross-Border.pdf)</td>
-                                <td class="py-3 px-4">client@empresa.com</td>
-                                <td class="py-3 px-4"><span class="px-2.5 py-0.5 text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full" data-es="Guardado" data-en="Stored">Guardado</span></td>
-                                <td class="py-3 px-4 text-slate-400">Ayer</td>
+                            <tr class="hover:bg-slate-900/40 transition">
+                                <td class="px-6 py-4 font-bold text-white">IP_Transfer_Agreement.docx</td>
+                                <td class="px-6 py-4 text-slate-400">Propiedad Intelectual Transfronteriza</td>
+                                <td class="px-6 py-4 text-brand-400">0x3e1a...77f9 (Timestamped)</td>
+                                <td class="px-6 py-4"><span class="px-2.5 py-1 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 font-semibold" data-es="Firmado digitalmente" data-en="Digitally Signed">Firmado digitalmente</span></td>
                             </tr>
                         </tbody>
                     </table>
@@ -288,483 +281,249 @@
             </div>
         </section>
 
-        <!-- 4. BÓVEDA & NOTARÍA -->
-        <section id="tab-vault" class="tab-content space-y-6">
+        <!-- 5. AGENTES IA -->
+        <section id="tab-agents" class="tab-content space-y-8">
             <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                 <div>
-                    <h2 class="text-2xl font-bold text-white" data-es="Bóveda Criptográfica & Notaría Digital" data-en="Cryptographic Vault & Digital Notary">Bóveda Criptográfica & Notaría Digital</h2>
-                    <p class="text-sm text-slate-400" data-es="Gestión segura de documentos legalizados, custodia con cifrado AES-256 y retención." data-en="Secure storage for notarized documents, AES-256 encryption, and retention.">Gestión segura de documentos legalizados, custodia con cifrado AES-256 y retención.</p>
+                    <h2 class="text-2xl font-bold text-white" data-es="Consola de Agentes Financieros & Legales" data-en="Financial & Legal AI Agents Console">Consola de Agentes Financieros & Legales</h2>
+                    <p class="text-sm text-slate-400" data-es="Ejecución controlada por cuotas y supervisión humana con criterio legal senior." data-en="Quota-controlled execution backed by senior legal oversight.">Ejecución controlada por cuotas y supervisión humana con criterio legal senior.</p>
                 </div>
-                <button onclick="showToast('Iniciando cargador seguro de archivos para Bóveda...')" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-2 self-start sm:self-auto">
-                    <i data-lucide="upload" class="w-4 h-4"></i>
-                    <span data-es="Cargar Archivo a Bóveda" data-en="Upload to Vault">Cargar Archivo a Bóveda</span>
-                </button>
             </div>
 
             <div class="grid lg:grid-cols-3 gap-6">
-                <!-- Lista de Documentos -->
-                <div class="lg:col-span-2 glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-semibold text-white" data-es="Documentos Custodiados" data-en="Vault Documents">Documentos Custodiados</h3>
-                    <div class="divide-y divide-slate-800">
-                        <div class="py-3.5 flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="file-text" class="w-6 h-6 text-brand-400"></i>
-                                <div>
-                                    <div class="text-sm font-medium text-white">Contrato_Servicios_Bilingue_2026.pdf</div>
-                                    <div class="text-xs text-slate-500 font-mono">Hash: 0x8f3a...b921 • Cifrado AES-256</div>
-                                </div>
-                            </div>
-                            <span class="px-2.5 py-1 text-xs bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 rounded-full" data-es="Firmado Notarial" data-en="Notarized">Firmado Notarial</span>
-                        </div>
-                        <div class="py-3.5 flex items-center justify-between">
-                            <div class="flex items-center gap-3">
-                                <i data-lucide="file-text" class="w-6 h-6 text-amber-400"></i>
-                                <div>
-                                    <div class="text-sm font-medium text-white">Escritura_Constitutiva_Empresarial.pdf</div>
-                                    <div class="text-xs text-slate-500 font-mono">Hash: 0x1c4e...7a11 • Pendiente de firma</div>
-                                </div>
-                            </div>
-                            <span class="px-2.5 py-1 text-xs bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-full" data-es="En Notaría" data-en="In Notary">En Notaría</span>
-                        </div>
-                    </div>
-                </div>
-
-                <!-- Formulario Notarial -->
                 <div class="glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-semibold text-white flex items-center gap-2">
-                        <i data-lucide="award" class="w-5 h-5 text-amber-400"></i>
-                        <span data-es="Solicitar Legalización" data-en="Request Legalization">Solicitar Legalización</span>
-                    </h3>
-                    <p class="text-xs text-slate-400" data-es="Somete un documento cifrado a validación jurada y firma digital notarial." data-en="Submit an encrypted document for notarized digital signature verification.">Somete un documento cifrado a validación jurada y firma digital notarial.</p>
-                    
-                    <div class="space-y-3 pt-2">
-                        <div>
-                            <label class="block text-xs text-slate-400 mb-1" data-es="Documento Objetivo" data-en="Target Document">Documento Objetivo</label>
-                            <select class="w-full bg-slate-900 border border-slate-800 rounded-xl p-2.5 text-xs text-white focus:outline-none focus:border-brand-500">
-                                <option>Contrato_Servicios_Bilingue_2026.pdf</option>
-                                <option>Escritura_Constitutiva_Empresarial.pdf</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label class="block text-xs text-slate-400 mb-1" data-es="Oficina Notarial Asignada" data-en="Assigned Notary Office">Oficina Notarial Asignada</label>
-                            <input type="text" value="Notaría Certificada Positum N° 4" readonly class="w-full bg-slate-950/60 border border-slate-800 rounded-xl p-2.5 text-xs text-slate-400 font-mono">
-                        </div>
-                        <button onclick="showToast('Solicitud notarial registrada con éxito.')" class="w-full bg-amber-600 hover:bg-amber-500 text-white font-bold py-2.5 rounded-xl text-xs transition shadow" data-es="Enviar a Notaría Digital" data-en="Send to Digital Notary">
-                            Enviar a Notaría Digital
-                        </button>
+                    <div class="flex items-center justify-between">
+                        <span class="p-2.5 bg-brand-500/10 text-brand-400 rounded-xl"><i data-lucide="cpu" class="w-5 h-5"></i></span>
+                        <span class="text-xs font-mono bg-emerald-500/10 text-emerald-400 px-2 py-1 rounded border border-emerald-500/20" data-es="Estado: Óptimo" data-en="Status: Optimal">Estado: Óptimo</span>
                     </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 5. AGENTES FINANCIEROS IA -->
-        <section id="tab-agents" class="tab-content space-y-6">
-            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-white" data-es="Consola de Agentes Financieros IA" data-en="Financial AI Agents Console">Consola de Agentes Financieros IA</h2>
-                    <p class="text-sm text-slate-400" data-es="Modelos autónomos para evaluación crediticia, traducción normativa y modelos de riesgo." data-en="Autonomous models for credit risk, regulatory translation, and financial modeling.">Modelos autónomos para evaluación crediticia, traducción normativa y modelos de riesgo.</p>
-                </div>
-                <button onclick="runAgentSimulation()" class="px-4 py-2 bg-brand-600 hover:bg-brand-500 text-white text-xs font-bold rounded-xl transition shadow flex items-center gap-2 self-start sm:self-auto">
-                    <i data-lucide="play" class="w-4 h-4"></i>
-                    <span data-es="Ejecutar Simulación de Agente" data-en="Run Agent Simulation">Ejecutar Simulación de Agente</span>
-                </button>
-            </div>
-
-            <div class="grid lg:grid-cols-3 gap-6">
-                <!-- Panel de Agentes Disponibles -->
-                <div class="space-y-4">
-                    <div class="glass-panel p-4 rounded-xl border-l-4 border-brand-500 cursor-pointer">
-                        <div class="flex justify-between items-start mb-1">
-                            <h4 class="font-semibold text-white text-sm">Evaluador de Riesgo Crediticio</h4>
-                            <span class="text-[10px] bg-brand-500/10 text-brand-400 font-mono px-2 py-0.5 rounded">v2.4</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mb-2" data-es="Análisis automático de estados contables y capacidad de pago." data-en="Automatic analysis of accounting statements and repayment capacity.">Análisis automático de estados contables y capacidad de pago.</p>
-                        <span class="text-[10px] text-emerald-400 font-semibold" data-es="Estado: Activo" data-en="Status: Active">Estado: Activo</span>
-                    </div>
-
-                    <div class="glass-panel p-4 rounded-xl hover:border-slate-700 cursor-pointer">
-                        <div class="flex justify-between items-start mb-1">
-                            <h4 class="font-semibold text-white text-sm" data-es="Traductor Legal/Fiscal Bilingüe" data-en="Bilingual Legal/Tax Translator">Traductor Legal/Fiscal Bilingüe</h4>
-                            <span class="text-[10px] bg-slate-800 text-slate-400 font-mono px-2 py-0.5 rounded">v1.1</span>
-                        </div>
-                        <p class="text-xs text-slate-400 mb-2" data-es="Conversión precisa entre terminología legal ES/EN." data-en="Accurate conversion between ES/EN legal terminology.">Conversión precisa entre terminología legal ES/EN.</p>
-                        <span class="text-[10px] text-amber-400 font-semibold" data-es="Estado: Standby" data-en="Status: Standby">Estado: Standby</span>
-                    </div>
+                    <h3 class="text-lg font-bold text-white" data-es="Auditor Financiero & Risk Agent" data-en="Financial Auditor & Risk Agent">Auditor Financiero & Risk Agent</h3>
+                    <p class="text-sm text-slate-400" data-es="Analiza estados de cuenta, balances y pasivos contingentes bajo normas internacionales." data-en="Analyzes financial statements and contingent liabilities under international standards.">Analiza estados de cuenta, balances y pasivos contingentes bajo normas internacionales.</p>
+                    <button onclick="runAgentSimulation()" class="w-full py-2.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-xs transition shadow-lg shadow-brand-600/20" data-es="Ejecutar Simulación de Agente" data-en="Run Agent Simulation">Ejecutar Simulación de Agente</button>
                 </div>
 
-                <!-- Consola Interactiva -->
-                <div class="lg:col-span-2 glass-panel rounded-2xl p-5 flex flex-col h-[420px]">
-                    <div class="flex items-center justify-between pb-3 border-b border-slate-800 mb-3">
+                <div class="lg:col-span-2 glass-panel p-6 rounded-2xl flex flex-col justify-between space-y-4">
+                    <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+                        <span class="text-xs font-mono text-slate-400 uppercase tracking-wider" data-es="Consola de Ejecución en Tiempo Real" data-en="Real-time Execution Console">Consola de Ejecución en Tiempo Real</span>
                         <div class="flex items-center gap-2">
-                            <span class="w-2.5 h-2.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                            <span class="font-mono text-xs text-slate-200">Terminal Agent-Runner v3.8</span>
+                            <span class="w-2 h-2 rounded-full bg-brand-400 animate-ping"></span>
+                            <span class="text-xs text-brand-400 font-mono">Token Metering Active</span>
                         </div>
-                        <span class="text-[10px] font-mono text-slate-500">Modelo: LLM-Legal-Fin-v4</span>
                     </div>
-
-                    <div id="agent-console" class="flex-grow overflow-y-auto bg-slate-950 border border-slate-900 rounded-xl p-4 font-mono text-xs text-brand-400 space-y-2 mb-3">
-                        <div>[14:20:00] Positum AI Agent Engine Inicializado.</div>
-                        <div>[14:20:02] Conexión establecida con Neon DB y almacén de claves en Vercel.</div>
-                        <div>[14:20:05] Esperando comando de ejecución...</div>
-                    </div>
-
-                    <div class="flex gap-2">
-                        <input type="text" id="agent-input" placeholder="Escribe una instrucción para el agente (ej: analizar contrato Q3)..." class="flex-grow bg-slate-900 border border-slate-800 rounded-xl px-4 py-2 text-xs text-white focus:outline-none focus:border-brand-500">
-                        <button onclick="sendAgentMessage()" class="bg-brand-600 hover:bg-brand-500 text-white px-4 py-2 rounded-xl text-xs font-bold transition flex items-center gap-1">
-                            <span data-es="Enviar" data-en="Send">Enviar</span>
-                            <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                        </button>
+                    <div id="agent-console" class="font-mono text-xs text-brand-400 bg-slate-950 p-4 rounded-xl h-48 overflow-y-auto space-y-2 border border-slate-800/80">
+                        <div>[SYSTEM] Positum Edge Node initialized. Neon RLS context loaded.</div>
+                        <div>[READY] Awaiting agent execution or document batch intake...</div>
                     </div>
                 </div>
             </div>
         </section>
 
-        <!-- 6. PANEL ADMIN -->
-        <section id="tab-admin" class="tab-content space-y-6">
-            <div class="flex items-center justify-between border-b border-amber-500/20 pb-4">
-                <div>
-                    <h2 class="text-2xl font-bold text-amber-400 flex items-center gap-2">
-                        <i data-lucide="shield-alert" class="w-6 h-6"></i>
-                        <span data-es="Panel de Administración Global" data-en="Global Admin Panel">Panel de Administración Global</span>
-                    </h2>
-                    <p class="text-sm text-slate-400" data-es="Inspección de servidor, cola de revisión de agentes e infraestructura." data-en="Server inspection, agent review queue, and infrastructure status.">Inspección de servidor, cola de revisión de agentes e infraestructura.</p>
-                </div>
-                <span class="text-xs bg-amber-500/10 text-amber-400 px-3 py-1 rounded-full border border-amber-500/30 font-mono">Role: SuperAdmin</span>
+        <!-- 6. SUSCRIPCIONES Y PRECIOS ($190, $490, $980) -->
+        <section id="tab-precios" class="tab-content space-y-12 py-6">
+            <div class="text-center max-w-2xl mx-auto space-y-4">
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-white" data-es="Planes de Suscripción Simétricos B2B" data-en="Symmetric B2B Subscription Tiers">Planes de Suscripción Simétricos B2B</h2>
+                <p class="text-slate-400 text-sm sm:text-base" data-es="Infraestructura corporativa con pasarelas seguras y control estricto de cuotas por plan." data-en="Corporate infrastructure with secure gateways and strict plan quota controls.">Infraestructura corporativa con pasarelas seguras y control estricto de cuotas por plan.</p>
             </div>
 
-            <div class="grid md:grid-cols-2 gap-6">
-                <div class="glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-semibold text-white" data-es="Cola de Revisión de Envíos" data-en="Submission Review Queue">Cola de Revisión de Envíos</h3>
-                    <div class="space-y-3">
-                        <div class="p-3 bg-slate-900/80 rounded-xl border border-slate-800 flex justify-between items-center">
-                            <div>
-                                <div class="text-xs font-medium text-white">Traducción Jurídica Bilingüe - Caso #102</div>
-                                <div class="text-[10px] text-slate-500 font-mono">Solicitante: agent-runner-01</div>
-                            </div>
-                            <div class="flex gap-1.5">
-                                <button onclick="showToast('Aprobado')" class="px-2.5 py-1 bg-emerald-600 text-white text-[10px] font-bold rounded-lg hover:bg-emerald-500">Aprobar</button>
-                                <button onclick="showToast('Rechazado')" class="px-2.5 py-1 bg-rose-600 text-white text-[10px] font-bold rounded-lg hover:bg-rose-500">Rechazar</button>
-                            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                <!-- Plan Básico -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-6 hover:border-brand-500/50 transition">
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-brand-400 bg-brand-950/80 px-3 py-1 rounded-full border border-brand-800" data-es="Básico" data-en="Basic">Básico</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-white">$190</span>
+                            <span class="text-slate-400 text-sm" data-es="USD / mes" data-en="USD / mo">USD / mes</span>
                         </div>
-                    </div>
-                </div>
-
-                <div class="glass-panel p-6 rounded-2xl space-y-4">
-                    <h3 class="font-semibold text-white" data-es="Estado de Infraestructura Backend" data-en="Backend Infrastructure Status">Estado de Infraestructura Backend</h3>
-                    <div class="space-y-2 text-xs text-slate-300 font-mono">
-                        <div class="flex justify-between py-1.5 border-b border-slate-800">
-                            <span>Neon PostgreSQL (Database)</span>
-                            <span class="text-emerald-400">ONLINE (RLS Active)</span>
-                        </div>
-                        <div class="flex justify-between py-1.5 border-b border-slate-800">
-                            <span>Vercel Edge Functions</span>
-                            <span class="text-emerald-400">OPERATIONAL</span>
-                        </div>
-                        <div class="flex justify-between py-1.5 border-b border-slate-800">
-                            <span>PayPal Webhook Endpoints</span>
-                            <span class="text-emerald-400">CONNECTED</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- 7. SUSCRIPCIONES / PRECIOS (CON PAYPAL REAL) -->
-        <section id="tab-precios" class="tab-content space-y-12">
-            <div class="text-center max-w-3xl mx-auto space-y-4">
-                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight text-white" data-es="Planes de Suscripción Recurrente" data-en="Recurring Subscription Plans">Planes de Suscripción Recurrente</h2>
-                <p class="text-slate-400 text-base" data-es="Escoge el nivel de infraestructura adecuado para tu volumen operativo legal y financiero." data-en="Choose the appropriate infrastructure tier for your legal and financial volume.">Escoge el nivel de infraestructura adecuado para tu volumen operativo legal y financiero.</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-stretch">
-                
-                <!-- PLAN BÁSICO ($190/mes) -->
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-slate-100" data-es="Básica" data-en="Basic">Básica</h3>
-                        <p class="text-slate-400 text-xs mb-6" data-es="Ideal para profesionales independientes y notarías emergentes." data-en="Ideal for independent professionals and emerging notary offices.">Ideal para profesionales independientes y notarías emergentes.</p>
-                        <div class="flex items-baseline mb-6">
-                            <span class="text-4xl sm:text-5xl font-black">$190</span>
-                            <span class="text-slate-400 ml-2 text-sm" data-es="/ mes" data-en="/ mo">/ mes</span>
-                        </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Hasta 25 documentos / mes" data-en="Up to 25 documents / mo">Hasta 25 documentos / mes</span></li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Traducción legal automatizada" data-en="Automated legal translation">Traducción legal automatizada</span></li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Acceso a Portal Privado Positum" data-en="Positum Private Portal Access">Acceso a Portal Privado Positum</span></li>
+                        <p class="text-sm text-slate-400" data-es="Ideal para profesionales y estudios independientes." data-en="Ideal for independent professionals and boutiques.">Ideal para profesionales y estudios independientes.</p>
+                        <ul class="space-y-3 text-sm text-slate-300 pt-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> <span data-es="Hasta 25 documentos / mes" data-en="Up to 25 documents / mo">Hasta 25 documentos / mes</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> <span data-es="Traducción legal automatizada" data-en="Automated legal translation">Traducción legal automatizada</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i> <span data-es="Acceso a portal privado (RLS)" data-en="Private portal access (RLS)">Acceso a portal privado (RLS)</span></li>
                         </ul>
                     </div>
-                    <!-- Contenedor PayPal Plan Básico -->
-                    <div class="w-full min-h-[50px] flex items-center justify-center">
-                        <div id="paypal-button-container-P-3S07576224668753ANLLCJPQ" class="w-full"></div>
-                    </div>
+                    <div id="paypal-button-container-basic" class="pt-4"></div>
                 </div>
 
-                <!-- PLAN ESTÁNDAR ($490/mes) -->
-                <div class="bg-slate-900 border-2 border-brand-500 rounded-3xl p-8 flex flex-col justify-between relative shadow-2xl shadow-brand-500/10">
-                    <div class="absolute -top-4 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[10px] uppercase tracking-wider font-extrabold px-4 py-1 rounded-full" data-es="Más Popular" data-en="Most Popular">Más Popular</div>
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-slate-100" data-es="Estándar" data-en="Standard">Estándar</h3>
-                        <p class="text-slate-400 text-xs mb-6" data-es="Diseñado para estudios jurídicos y agencias de crecimiento." data-en="Designed for law firms and growth agencies.">Diseñado para estudios jurídicos y agencias de crecimiento.</p>
-                        <div class="flex items-baseline mb-6">
-                            <span class="text-4xl sm:text-5xl font-black text-brand-400">$490</span>
-                            <span class="text-slate-400 ml-2 text-sm" data-es="/ mes" data-en="/ mo">/ mes</span>
+                <!-- Plan Estándar -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-6 border-brand-500/50 relative shadow-2xl shadow-brand-950/50">
+                    <div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-brand-600 text-white text-[10px] font-extrabold uppercase px-3 py-1 rounded-full tracking-wider shadow-md" data-es="Más Popular" data-en="Most Popular">Más Popular</div>
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-emerald-400 bg-emerald-950/80 px-3 py-1 rounded-full border border-emerald-800" data-es="Estándar" data-en="Standard">Estándar</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-white">$490</span>
+                            <span class="text-slate-400 text-sm" data-es="USD / mes" data-en="USD / mo">USD / mes</span>
                         </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li class="flex items-center gap-2 text-brand-300"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Hasta 120 documentos / mes" data-en="Up to 120 documents / mo">Hasta 120 documentos / mes</span></li>
-                            <li class="flex items-center gap-2 text-brand-300"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Revisión bilingüe avanzada (ES/EN)" data-en="Advanced bilingual review (ES/EN)">Revisión bilingüe avanzada (ES/EN)</span></li>
-                            <li class="flex items-center gap-2 text-brand-300"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Integración prioritaria en Neon DB" data-en="Priority Neon DB integration">Integración prioritaria en Neon DB</span></li>
-                            <li class="flex items-center gap-2 text-brand-300"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Portal Privado Multiusuario" data-en="Multi-user Private Portal">Portal Privado Multiusuario</span></li>
+                        <p class="text-sm text-slate-400" data-es="Diseñado para agencias y software factories crecientes." data-en="Designed for growing agencies and software factories.">Diseñado para agencias y software factories crecientes.</p>
+                        <ul class="space-y-3 text-sm text-slate-300 pt-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> <span data-es="Hasta 120 documentos / mes" data-en="Up to 120 documents / mo">Hasta 120 documentos / mes</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> <span data-es="Revisión bilingüe avanzada" data-en="Advanced bilingual review">Revisión bilingüe avanzada</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-emerald-400"></i> <span data-es="Portal privado multiusuario" data-en="Multi-user private portal">Portal privado multiusuario</span></li>
                         </ul>
                     </div>
-                    <!-- Contenedor PayPal Plan Estándar -->
-                    <div class="w-full min-h-[50px] flex items-center justify-center">
-                        <div id="paypal-button-container-P-4SG25857VS463943UNLLCNJY" class="w-full"></div>
-                    </div>
+                    <div id="paypal-button-container-standard" class="pt-4"></div>
                 </div>
 
-                <!-- PLAN CORPORATIVA ($980/mes) -->
-                <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 flex flex-col justify-between transition hover:border-slate-700">
-                    <div>
-                        <h3 class="text-xl font-bold mb-2 text-slate-100" data-es="Corporativa" data-en="Corporate">Corporativa</h3>
-                        <p class="text-slate-400 text-xs mb-6" data-es="Solución integral sin límites para grandes corporaciones." data-en="Comprehensive unlimited solution for large corporations.">Solución integral sin límites para grandes corporaciones.</p>
-                        <div class="flex items-baseline mb-6">
-                            <span class="text-4xl sm:text-5xl font-black">$980</span>
-                            <span class="text-slate-400 ml-2 text-sm" data-es="/ mes" data-en="/ mo">/ mes</span>
+                <!-- Plan Corporativo -->
+                <div class="glass-panel p-8 rounded-2xl flex flex-col justify-between space-y-6 hover:border-brand-500/50 transition">
+                    <div class="space-y-4">
+                        <span class="text-xs font-bold uppercase tracking-wider text-purple-400 bg-purple-950/80 px-3 py-1 rounded-full border border-purple-800" data-es="Corporativo" data-en="Corporate">Corporativo</span>
+                        <div class="flex items-baseline gap-1">
+                            <span class="text-4xl font-black text-white">$980</span>
+                            <span class="text-slate-400 text-sm" data-es="USD / mes" data-en="USD / mo">USD / mes</span>
                         </div>
-                        <ul class="space-y-3 text-xs text-slate-300 mb-8">
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Documentos ilimitados / mes" data-en="Unlimited documents / mo">Documentos ilimitados / mes</span></li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Infraestructura dedicada en Vercel" data-en="Dedicated Vercel infrastructure">Infraestructura dedicada en Vercel</span></li>
-                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-400"></i><span data-es="Account Manager Exclusivo" data-en="Exclusive Account Manager">Account Manager Exclusivo</span></li>
+                        <p class="text-sm text-slate-400" data-es="Para operaciones de escala Enterprise internacional." data-en="For international Enterprise scale operations.">Para operaciones de escala Enterprise internacional.</p>
+                        <ul class="space-y-3 text-sm text-slate-300 pt-2">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> <span data-es="Documentos ilimitados" data-en="Unlimited documents">Documentos ilimitados</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> <span data-es="Infraestructura dedicada (Neon RLS)" data-en="Dedicated infrastructure">Infraestructura dedicada (Neon RLS)</span></li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-purple-400"></i> <span data-es="Account Manager y Notaría Senior" data-en="Dedicated Account Manager">Account Manager y Notaría Senior</span></li>
                         </ul>
                     </div>
-                    <!-- Contenedor PayPal Plan Corporativa -->
-                    <div class="w-full min-h-[50px] flex items-center justify-center">
-                        <div id="paypal-button-container-P-84A78236VB690052ANLLCPTY" class="w-full"></div>
-                    </div>
+                    <div id="paypal-button-container-corporate" class="pt-4"></div>
                 </div>
-
             </div>
         </section>
 
     </main>
 
     <!-- FOOTER -->
-    <footer class="py-8 border-t border-slate-800 bg-slate-950 text-center text-slate-500 text-xs mt-12">
-        <p>&copy; 2026 Positum LegalTech & AI Platform. <span data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+    <footer class="border-t border-slate-800 bg-slate-950 py-8 mt-12 text-center text-xs text-slate-500 space-y-2">
+        <p>© 2026 POSITUM. LegalTech & Financial AI Infrastructure. Todos los derechos reservados.</p>
+        <p class="font-mono text-[10px]">Powered by Vercel Edge CDN & Neon PostgreSQL Serverless RLS.</p>
     </footer>
 
-    <!-- TOAST NOTIFICATION BOX -->
-    <div id="toast-box" class="fixed bottom-5 right-5 z-50 transform translate-y-20 opacity-0 transition-all duration-300 bg-slate-900 text-white border border-brand-500/40 px-5 py-3 rounded-xl shadow-2xl flex items-center gap-3 text-xs">
-        <i data-lucide="info" class="w-4 h-4 text-brand-400"></i>
-        <span id="toast-message"></span>
-    </div>
-
-    <!-- MODAL DE AUTH CLIENTE -->
+    <!-- MODAL DE ACCESO / LOGIN -->
     <div id="login-modal" class="fixed inset-0 z-50 bg-slate-950/80 backdrop-blur-sm hidden flex items-center justify-center p-4">
-        <div class="bg-slate-900 border border-slate-800 rounded-3xl p-8 max-w-md w-full shadow-2xl relative">
-            <button onclick="closeLoginModal()" class="absolute top-6 right-6 text-slate-400 hover:text-white text-lg">✕</button>
-            
-            <div class="text-center mb-6">
-                <span class="text-2xl font-black tracking-wider bg-gradient-to-r from-brand-400 to-emerald-200 bg-clip-text text-transparent">POSITUM</span>
-                <h3 class="text-xl font-bold text-white mt-2" data-es="Acceso al Espacio Privado" data-en="Private Space Access">Acceso al Espacio Privado</h3>
-                <p class="text-xs text-slate-400 mt-1" data-es="Conexión cifrada a tu Bóveda Notarial" data-en="Encrypted Connection to your Legal Vault">Conexión cifrada a tu Bóveda Notarial</p>
+        <div class="glass-panel w-full max-w-md p-6 sm:p-8 rounded-2xl space-y-6 relative border border-slate-700 shadow-2xl">
+            <button onclick="closeLoginModal()" class="absolute top-4 right-4 text-slate-400 hover:text-white"><i data-lucide="x" class="w-5 h-5"></i></button>
+            <div class="space-y-2 text-center">
+                <h3 class="text-xl font-bold text-white" data-es="Acceso a Bóveda Privada" data-en="Private Vault Login">Acceso a Bóveda Privada</h3>
+                <p class="text-xs text-slate-400" data-es="Ingresa con credenciales segregadas por Row-Level Security." data-en="Login with Row-Level Security tenant segregation.">Ingresa con credenciales segregadas por Row-Level Security.</p>
             </div>
-
-            <form onsubmit="handleLogin(event)" class="space-y-4">
+            <div class="space-y-4">
                 <div>
                     <label class="block text-xs font-semibold text-slate-300 mb-1" data-es="Correo Corporativo" data-en="Corporate Email">Correo Corporativo</label>
-                    <input type="email" required placeholder="usuario@empresa.com" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-xs focus:outline-none focus:border-brand-500 transition">
+                    <input type="email" id="login-email" class="w-full px-4 py-2.5 rounded-xl bg-slate-900 border border-slate-700 text-white text-sm focus:outline-none focus:border-brand-500 font-mono" placeholder="ceo@empresa.com">
                 </div>
-                <div>
-                    <label class="block text-xs font-semibold text-slate-300 mb-1" data-es="Contraseña / Token de Bóveda" data-en="Password / Vault Token">Contraseña / Token de Bóveda</label>
-                    <input type="password" required placeholder="••••••••••••" class="w-full px-4 py-3 rounded-xl bg-slate-950 border border-slate-800 text-slate-200 text-xs focus:outline-none focus:border-brand-500 transition">
-                </div>
-                <button type="submit" class="w-full py-3.5 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold transition shadow-lg shadow-brand-600/30 text-xs mt-2" data-es="Iniciar Sesión Segura" data-en="Secure Login">
-                    Iniciar Sesión Segura
-                </button>
-            </form>
+                <button onclick="simulateLogin()" class="w-full py-3 rounded-xl bg-brand-600 hover:bg-brand-500 text-white font-bold text-sm shadow-lg shadow-brand-600/30 transition" data-es="Desbloquear Workspace" data-en="Unlock Workspace">Desbloquear Workspace</button>
+            </div>
         </div>
     </div>
 
-    <!-- JAVASCRIPT: LÓGICA DE CONTROLADORES -->
+    <!-- JAVASCRIPT DE CONTROL -->
     <script>
-        let currentLang = 'es';
-        let selectedVolume = 0;
+        // Inicializar iconos de Lucide
+        lucide.createIcons();
 
-        // Control de Pestañas
+        let currentLang = 'es';
+        let diagState = { volume: 0, bilingual: false };
+
         function switchTab(tabId) {
             document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
             const target = document.getElementById('tab-' + tabId);
-            if (target) {
-                target.classList.add('active');
-            }
+            if (target) target.classList.add('active');
             window.scrollTo({ top: 0, behavior: 'smooth' });
         }
 
-        // Cambio de Idioma Multilingüe (ES / EN)
         function toggleLanguage() {
             currentLang = currentLang === 'es' ? 'en' : 'es';
-            document.getElementById('lang-label').innerText = currentLang === 'es' ? 'EN' : 'ES';
-            document.documentElement.lang = currentLang;
-
+            document.getElementById('lang-label').innerText = currentLang.toUpperCase();
+            
             document.querySelectorAll('[data-es]').forEach(el => {
                 const text = el.getAttribute(`data-${currentLang}`);
                 if (text) el.innerText = text;
             });
         }
 
-        // Lógica del Diagnóstico
+        // Diagnóstico interactivo
         function setVol(val) {
-            selectedVolume = val;
+            diagState.volume = val;
             document.getElementById('diag-step-1').classList.add('hidden');
             document.getElementById('diag-step-2').classList.remove('hidden');
         }
 
-        function runDiagnostic(highDemand) {
+        function runDiagnostic(bilingualReq) {
+            diagState.bilingual = bilingualReq;
             document.getElementById('diag-step-2').classList.add('hidden');
-            const resultBox = document.getElementById('diag-result');
-            resultBox.classList.remove('hidden');
-
-            let recommendation = '';
-            if (selectedVolume <= 10 && !highDemand) {
-                recommendation = currentLang === 'es' 
-                    ? 'Recomendamos la <strong>Suscripción Básica ($190/mes)</strong> para cubrir tus necesidades puntuales con total seguridad jurídica.'
-                    : 'We recommend the <strong>Basic Subscription ($190/mo)</strong> to cover your specific needs with full legal security.';
-            } else if (selectedVolume <= 50 || highDemand) {
-                recommendation = currentLang === 'es'
-                    ? 'Recomendamos la <strong>Suscripción Estándar ($490/mes)</strong>. Es el plan óptimo para tu volumen y exigencia bilingüe.'
-                    : 'We recommend the <strong>Standard Subscription ($490/mo)</strong>. It is the optimal plan for your volume and bilingual requirements.';
-            } else {
-                recommendation = currentLang === 'es'
-                    ? 'Recomendamos la <strong>Suscripción Corporativa ($980/mes)</strong> para garantizar capacidad ilimitada y soporte dedicado.'
-                    : 'We recommend the <strong>Corporate Subscription ($980/mo)</strong> to guarantee unlimited capacity and dedicated support.';
+            
+            let planRec = "Plan Básico (USD 190/mes) - Óptimo para su volumen operativo inicial.";
+            if (diagState.volume > 50 || diagState.bilingual) {
+                planRec = "Plan Estándar (USD 490/mes) o Plan Corporativo (USD 980/mes) - Recomendado por alta exigencia bilingüe y volumen contractual.";
             }
 
-            document.getElementById('diag-text-out').innerHTML = recommendation;
+            document.getElementById('diag-text-out').innerText = planRec;
+            document.getElementById('diag-result').classList.remove('hidden');
         }
 
-        // Simulación del Agente IA
-        function runAgentSimulation() {
-            const consoleBox = document.getElementById('agent-console');
-            const time = new Date().toLocaleTimeString();
-            consoleBox.innerHTML += `<div>[${time}] Iniciando simulación de modelo financiero...</div>`;
-            setTimeout(() => {
-                consoleBox.innerHTML += `<div>[${time}] Analizando balances y ratio de liquidez (1.85)... OK.</div>`;
-                consoleBox.innerHTML += `<div>[${time}] Verificación de riesgo completada. Emisión sugerida.</div>`;
-                consoleBox.scrollTop = consoleBox.scrollHeight;
-            }, 800);
-        }
-
-        function sendAgentMessage() {
-            const input = document.getElementById('agent-input');
-            const msg = input.value.trim();
-            if (!msg) return;
-
-            const consoleBox = document.getElementById('agent-console');
-            const time = new Date().toLocaleTimeString();
-            consoleBox.innerHTML += `<div class="text-white">[${time}] Usuario: ${msg}</div>`;
-            input.value = '';
-
-            setTimeout(() => {
-                consoleBox.innerHTML += `<div>[${time}] Agente IA: Procesando consulta "${msg}" mediante modelo juríco-financiero...</div>`;
-                consoleBox.scrollTop = consoleBox.scrollHeight;
-            }, 600);
-        }
-
-        // Modal Auth
         function openLoginModal() {
             document.getElementById('login-modal').classList.remove('hidden');
         }
-
         function closeLoginModal() {
             document.getElementById('login-modal').classList.add('hidden');
         }
-
-        function handleLogin(e) {
-            e.preventDefault();
-            showToast(currentLang === 'es' 
-                ? 'Validando credenciales en Neon DB... Redirigiendo al espacio privado.' 
-                : 'Validating credentials in Neon DB... Redirecting to private portal.');
+        function simulateLogin() {
+            const email = document.getElementById('login-email').value;
+            if(!email) { alert('Por favor ingresa un correo válido.'); return; }
+            alert('Autenticación exitosa (RLS Session Configured) para: ' + email);
             closeLoginModal();
             switchTab('dashboard');
         }
 
-        // Sistema de Toast alternativo a alert()
-        function showToast(msg) {
-            const toast = document.getElementById('toast-box');
-            const messageEl = document.getElementById('toast-message');
-            if (!toast || !messageEl) return;
-
-            messageEl.innerText = msg;
-            toast.classList.remove('translate-y-20', 'opacity-0');
-            toast.classList.add('translate-y-0', 'opacity-100');
-
-            setTimeout(() => {
-                toast.classList.remove('translate-y-0', 'opacity-100');
-                toast.classList.add('translate-y-20', 'opacity-0');
-            }, 3500);
+        function runAgentSimulation() {
+            const consoleBox = document.getElementById('agent-console');
+            const logs = [
+                "[AGENT] Verificando cuota de tokens mensual...",
+                "[NEON RLS] Estableciendo variable app.current_tenant_id...",
+                "[ANALYZE] Procesando estados financieros y pasivos contingentes...",
+                "[SUCCESS] Auditoría completada con éxito. Margen conservado al 96.4%."
+            ];
+            let i = 0;
+            const interval = setInterval(() => {
+                if(i < logs.length) {
+                    const div = document.createElement('div');
+                    div.innerText = logs[i];
+                    consoleBox.appendChild(div);
+                    consoleBox.scrollTop = consoleBox.scrollHeight;
+                    i++;
+                } else {
+                    clearInterval(interval);
+                }
+            }, 800);
         }
 
-        // RENDERIZADO OFICIAL Y SEGURO DE BOTONES PAYPAL AL CARGAR
-        function initPayPalButtons() {
-            if (typeof paypal === 'undefined') {
-                setTimeout(initPayPalButtons, 500);
-                return;
-            }
-
-            try {
-                // 1. Plan Básico ($190/mes)
-                const basicContainer = document.querySelector('#paypal-button-container-P-3S07576224668753ANLLCJPQ');
-                if (basicContainer && !basicContainer.hasChildNodes()) {
-                    paypal.Buttons({
-                        style: { shape: 'rect', color: 'gold', layout: 'vertical', label: 'subscribe' },
-                        createSubscription: function(data, actions) {
-                            return actions.subscription.create({ 'plan_id': 'P-3S07576224668753ANLLCJPQ' });
-                        },
-                        onApprove: function(data) {
-                            showToast((currentLang === 'es' ? 'Suscripción Básica exitosa ID: ' : 'Basic Subscription success ID: ') + data.subscriptionID);
-                        }
-                    }).render('#paypal-button-container-P-3S07576224668753ANLLCJPQ');
+        // Renderizado seguro de botones de PayPal para suscripciones
+        if (typeof paypal !== 'undefined') {
+            // Plan Básico
+            paypal.Buttons({
+                style: { shape: 'rect', color: 'blue', layout: 'vertical', label: 'subscribe' },
+                createSubscription: function(data, actions) {
+                    return actions.subscription.create({ 'plan_id': 'P-BASIC_PLAN_ID_PLACEHOLDER' });
+                },
+                onApprove: function(data, actions) {
+                    alert('Suscripción iniciada. El webhook en Vercel validará el alta en Neon DB: ' + data.subscriptionID);
                 }
+            }).render('#paypal-button-container-basic');
 
-                // 2. Plan Estándar ($490/mes)
-                const stdContainer = document.querySelector('#paypal-button-container-P-4SG25857VS463943UNLLCNJY');
-                if (stdContainer && !stdContainer.hasChildNodes()) {
-                    paypal.Buttons({
-                        style: { shape: 'rect', color: 'gold', label: 'subscribe' },
-                        createSubscription: function(data, actions) {
-                            return actions.subscription.create({ 'plan_id': 'P-4SG25857VS463943UNLLCNJY' });
-                        },
-                        onApprove: function(data) {
-                            showToast((currentLang === 'es' ? 'Suscripción Estándar exitosa ID: ' : 'Standard Subscription success ID: ') + data.subscriptionID);
-                        }
-                    }).render('#paypal-button-container-P-4SG25857VS463943UNLLCNJY');
+            // Plan Estándar
+            paypal.Buttons({
+                style: { shape: 'rect', color: 'silver', layout: 'vertical', label: 'subscribe' },
+                createSubscription: function(data, actions) {
+                    return actions.subscription.create({ 'plan_id': 'P-STANDARD_PLAN_ID_PLACEHOLDER' });
+                },
+                onApprove: function(data, actions) {
+                    alert('Suscripción Estándar iniciada. ID: ' + data.subscriptionID);
                 }
+            }).render('#paypal-button-container-standard');
 
-                // 3. Plan Corporativa ($980/mes)
-                const corpContainer = document.querySelector('#paypal-button-container-P-84A78236VB690052ANLLCPTY');
-                if (corpContainer && !corpContainer.hasChildNodes()) {
-                    paypal.Buttons({
-                        style: { shape: 'rect', color: 'gold', label: 'subscribe' },
-                        createSubscription: function(data, actions) {
-                            return actions.subscription.create({ 'plan_id': 'P-84A78236VB690052ANLLCPTY' });
-                        },
-                        onApprove: function(data) {
-                            showToast((currentLang === 'es' ? 'Suscripción Corporativa exitosa ID: ' : 'Corporate Subscription success ID: ') + data.subscriptionID);
-                        }
-                    }).render('#paypal-button-container-P-84A78236VB690052ANLLCPTY');
+            // Plan Corporativo
+            paypal.Buttons({
+                style: { shape: 'rect', color: 'black', layout: 'vertical', label: 'subscribe' },
+                createSubscription: function(data, actions) {
+                    return actions.subscription.create({ 'plan_id': 'P-CORPORATE_PLAN_ID_PLACEHOLDER' });
+                },
+                onApprove: function(data, actions) {
+                    alert('Suscripción Corporativa iniciada. ID: ' + data.subscriptionID);
                 }
-            } catch (err) {
-                console.warn('Error inicializando SDK de PayPal:', err);
-            }
+            }).render('#paypal-button-container-corporate');
         }
-
-        window.addEventListener('load', function() {
-            if (window.lucide) {
-                lucide.createIcons();
-            }
-            initPayPalButtons();
-        });
     </script>
 </body>
 </html>
